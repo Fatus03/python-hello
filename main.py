@@ -8,7 +8,7 @@ TOKEN = os.getenv("TOKEN")
 intents = discord.Intents.default()
 intents.message_content = True
 
-bot = commands.Bot(command_prefix="!", intents=intents)
+bot = commands.Bot(command_prefix="|", intents=intents)
 
 @bot.event
 async def on_ready():
@@ -17,11 +17,10 @@ async def on_ready():
         synced = await bot.tree.sync()
         print(f"Đã sync {len(synced)} slash command(s).")
     except Exception as e:
-        print(f"Lỗi sync lệnh: {e}")
+        print(e)
 
-# Slash command
-@bot.tree.command(name="hello", description="Chào bot 👋")
+@bot.tree.command(name="hello", description="Chào bot")
 async def hello(interaction: discord.Interaction):
-    await interaction.response.send_message("Xin chào! Tôi đang chạy bằng Railway 🚄")
+    await interaction.response.send_message("Xin chào! Tôi đang chạy trên Railway 🚄")
 
 bot.run(TOKEN)
