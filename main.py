@@ -17,5 +17,4 @@ async def on_ready():
 async def hello(ctx):
     await ctx.send("Xin chào! Tôi đang chạy trên Railway 🚄")
 
-# Chạy bot
 bot.run(TOKEN)
