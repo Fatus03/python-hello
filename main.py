@@ -12,7 +12,7 @@ bot = commands.Bot(command_prefix="|", intents=intents)
 
 @bot.event
 async def on_ready():
-    print(f"✅ Bot đã đăng nhập với tên: {bot.user}")
+    print(f" Bot đã đăng nhập với tên: {bot.user}")
     try:
         synced = await bot.tree.sync()  # đồng bộ slash command
         print(f"Đã sync {len(synced)} slash command(s).")
@@ -22,6 +22,6 @@ async def on_ready():
 # Slash command /hello
 @bot.tree.command(name="hello", description="Chào bot 🤖")
 async def hello(interaction: discord.Interaction):
-    await interaction.response.send_message("Xin chào! Tôi đang chạy trên Railway 🚄")
+    await interaction.response.send_message("Xin chào! Tôi đang chạy trên Railway ")
 
 bot.run(TOKEN)
