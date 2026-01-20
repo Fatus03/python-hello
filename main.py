@@ -11,10 +11,16 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 
 @bot.event
 async def on_ready():
-    print(f"✅ Bot đã đăng nhập với tên: {bot.user}")
+    print(f"Bot đã đăng nhập với tên: {bot.user}")
 
 @bot.command()
 async def hello(ctx):
-    await ctx.send("Xin chào! Tôi đang chạy trên Railway 🚄")
+    await ctx.send("Xin chào! Tôi đang chạy ổn định trên Railway 🚀")
 
-bot.run(TOKEN)
+
+try:
+    bot.run(TOKEN)
+except Exception as e:
+    print(f"Lỗi: {e}")
+    import time
+    time.sleep(5)
