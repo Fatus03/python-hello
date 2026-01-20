@@ -1,12 +1,24 @@
-from flask import Flask
 import os
+import discord
+from discord.ext import commands
 
-app = Flask(__name__)
+# Lấy token bot từ biến môi trường Railway
+TOKEN = os.getenv("TOKEN")
 
-@app.route("/")
-def hello():
-    return "Hello, Railway!"
+# Tạo intents (bật message_content để bot đọc tin nhắn)
+intents = discord.Intents.default()
+intents.message_content = True
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+# Tạo bot với prefix "!"
+bot = commands.Bot(command_prefix="!", intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f"✅ Bot đã đăng nhập với tên: {bot.user}")
+
+@bot.command()
+async def hello(ctx):
+    await ctx.send("Xin chào! Tôi đang chạy trên Railway 🚄")
+
+# Chạy bot
+bot.run(TOKEN)
